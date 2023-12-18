@@ -1,19 +1,30 @@
-plugins {
-    id 'java'
-}
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 
-repositories {
-    mavenCentral()
-}
+    repositories {
+        mavenCentral()
+    }
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
+    dependencies {
+        implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+        runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.9'
 
-test {
-    useJUnitPlatform()
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
+
+        implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.3.Final'
+        annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.5.3.Final'
+        runtimeOnly group: 'com.mysql', name: 'mysql-connector-j', version: '8.2.0'
+        implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.1'
+    }
 }
