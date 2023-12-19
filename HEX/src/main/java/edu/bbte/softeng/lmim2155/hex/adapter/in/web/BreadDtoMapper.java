@@ -7,9 +7,7 @@ import java.util.Collection;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.stereotype.Component;
 
-@Component
 @Mapper(componentModel = "spring")
 public interface BreadDtoMapper {
     @Mapping(target = "id", ignore = true)

@@ -4,9 +4,7 @@ import edu.bbte.softeng.lmim2155.hex.application.domain.entity.Bread;
 import java.util.Collection;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
 
-@Component
 @Mapper(componentModel = "spring")
 public interface BreadJpaMapper {
     BreadJpaEntity toJpaEntity(Bread bread);

@@ -54,11 +54,4 @@ public class BreadController {
             .buyById(id)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
-
-    @PostConstruct
-    public void fill() {
-        breadService.create(new BreadInDto("baget", 1f, 2f, 3L));
-        breadService.create(new BreadInDto("kifli", 1f, 2f, 3L));
-        breadService.create(new BreadInDto("boulle", 1f, 2f, 3L));
-    }
 }

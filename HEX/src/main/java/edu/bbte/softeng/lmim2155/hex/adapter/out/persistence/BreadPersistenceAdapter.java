@@ -13,25 +13,25 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BreadPersistenceAdapter implements CreateBreadPort, FindBreadPort, BuyBreadPort {
     private final BreadRepository breadRepository;
-    private final BreadJpaMapper breadMapper;
+    private final BreadJpaMapper breadJpaMapper;
 
     @Override
     public Optional<Bread> buyById(Long id) {
         Optional<BreadJpaEntity> bread = breadRepository.findById(id);
         bread.ifPresent(breadRepository::delete);
-        return bread.map(breadMapper::toDomain);
+        return bread.map(breadJpaMapper::toDomain);
     }
 
     @Override
     public Bread create(Bread bread) {
-        return breadMapper.toDomain(
-            breadRepository.save(breadMapper.toJpaEntity(bread))
+        return breadJpaMapper.toDomain(
+            breadRepository.save(breadJpaMapper.toJpaEntity(bread))
         );
     }
 
     @Override
     public Collection<Bread> findAll() {
-        return breadMapper.toDomain(
+        return breadJpaMapper.toDomain(
             breadRepository.findAll()
         );
     }
@@ -40,6 +40,6 @@ public class BreadPersistenceAdapter implements CreateBreadPort, FindBreadPort, 
     public Optional<Bread> findById(Long id) {
         return breadRepository
             .findById(id)
-            .map(breadMapper::toDomain);
+            .map(breadJpaMapper::toDomain);
     }
 }

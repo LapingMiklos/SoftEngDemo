@@ -5,7 +5,6 @@ import edu.bbte.softeng.lmim2155.hex.adapter.in.web.dto.BreadOutDto;
 import edu.bbte.softeng.lmim2155.hex.application.port.in.BuyBreadUseCase;
 import edu.bbte.softeng.lmim2155.hex.application.port.in.CreateBreadUseCase;
 import edu.bbte.softeng.lmim2155.hex.application.port.in.FindBreadUseCase;
-import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
@@ -64,12 +63,5 @@ public class BreadController {
             .buyById(id)
             .map(breadDtoMapper::toOutDto)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    }
-
-    @PostConstruct
-    public void fill() {
-//        createBreadUseCase.create(new BreadInDto("baget", 1f, 2f, 3L));
-//        breadService.create(new BreadInDto("kifli", 1f, 2f, 3L));
-//        breadService.create(new BreadInDto("boulle", 1f, 2f, 3L));
     }
 }
