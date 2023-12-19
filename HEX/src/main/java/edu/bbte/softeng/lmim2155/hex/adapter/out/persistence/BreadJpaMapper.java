@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Mapper(componentModel = "spring")
-public interface BreadMapper {
+public interface BreadJpaMapper {
     BreadJpaEntity toJpaEntity(Bread bread);
 
     Bread toDomain(BreadJpaEntity jpaEntity);

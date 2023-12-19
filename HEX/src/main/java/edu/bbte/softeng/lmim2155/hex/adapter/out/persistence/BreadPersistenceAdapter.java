@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BreadPersistenceAdapter implements CreateBreadPort, FindBreadPort, BuyBreadPort {
     private final BreadRepository breadRepository;
-    private final BreadMapper breadMapper;
+    private final BreadJpaMapper breadMapper;
 
     @Override
     public Optional<Bread> buyById(Long id) {
