@@ -41,9 +41,7 @@ public class BreadServiceImpl implements BreadService {
     @Override
     public Optional<BreadOutDto> buyById(Long id) {
         Optional<Bread> bread = breadRepository.findById(id);
-        if (bread.isPresent()) {
-            breadRepository.deleteById(id);
-        }
+        bread.ifPresent(breadRepository::delete);
         return bread.map(breadMapper::toOutDto);
     }
 }
