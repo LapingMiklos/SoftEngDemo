@@ -12,7 +12,7 @@ subprojects {
     }
 
     dependencies {
-        runtimeOnly group: 'com.h2database', name: 'h2', version: '2.2.224'
+        runtimeOnly group: 'com.mysql', name: 'mysql-connector-j', version: '8.2.0'
 
         implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
         runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.9'
